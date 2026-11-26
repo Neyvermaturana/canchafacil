@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserva tu cancha de fútbol de manera fácil y rápida.">
+
+    <title>CanchaFácil | Reserva tu cancha</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        .whatsapp-flotante {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-flotante:hover {
+            transform: scale(1.1);
+        }
+
+        /* ==========================================
+           GALERÍA ILUSTRATIVA CANCHAFÁCIL
+        ========================================== */
+
+        .galeria-cancha {
+            padding: 75px 7%;
+            background: #f7f9fc;
+        }
+
+        .galeria-encabezado {
+            text-align: center;
+            margin: 0 auto 38px;
+            max-width: 760px;
+        }
+
+        .galeria-etiqueta {
+            color: #16a34a;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .galeria-encabezado h2 {
+            font-size: 34px;
+            color: #173b8f;
+            margin: 12px 0;
+        }
+
+        .galeria-encabezado p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-auto-rows: 220px;
+            gap: 18px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .galeria-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #e2e8f0;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+        }
+
+        .galeria-grande {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .galeria-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .galeria-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .galeria-texto {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 38px 16px 16px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+        }
+
+        .galeria-aviso {
+            max-width: 1200px;
+            margin: 22px auto 0;
+            color: #64748b;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .galeria-cancha {
+                padding: 50px 5%;
+            }
+
+            .galeria-encabezado h2 {
+                font-size: 26px;
+            }
+
+            .galeria-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-auto-rows: 160px;
+                gap: 10px;
+            }
+
+            .galeria-grande {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+
+    <header class="navbar">
+
+        <a href="#inicio" class="logo">
+            <span class="logo-icon">⚽</span>
+            CANCHA<span>FÁCIL</span>
+        </a>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#cancha">Nuestra cancha</a>
+            <a href="#reservar">Reservar</a>
+            <a href="#mis-reservas">Mis reservas</a>
+            <a href="#organizar-partido">Partidos</a>
+        </nav>
+
+        <a href="#reservar" class="nav-button">
+            Reservar ahora
+        </a>
+
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <span class="tag">
+                    ⚽ TU PASIÓN, NUESTRA CANCHA
+                </span>
+
+                <h1>
+                    EL FÚTBOL SE<br>
+                    VIVE <span>JUGANDO.</span>
+                </h1>
+
+                <p>
+                    Reserva tu espacio, reúne a tus amigos
+                    y disfruta del mejor fútbol.
+                </p>
+
+                <a href="#reservar" class="primary-button">
+                    RESERVAR CANCHA →
+                </a>
+
+                <div class="hero-info">
+
+                    <div>
+                        <strong>100%</strong>
+                        <small>Deporte</small>
+                    </div>
+
+                    <div>
+                        <strong>1</strong>
+                        <small>Gran cancha</small>
+                    </div>
+
+                    <div>
+                        <strong>7 DÍAS</strong>
+                        <small>Disponibilidad</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- INFORMACIÓN DE LA CANCHA -->
+
+        <section class="section cancha-section" id="cancha">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    CONOCE NUESTRO ESPACIO
+                </span>
+
+                <h2>
+                    UNA CANCHA PARA
+                    <span>GRANDES PARTIDOS.</span>
+                </h2>
+
+                <p>
+                    Todo listo para que disfrutes tu próximo encuentro.
+                </p>
+
+            </div>
+
+            <div class="features">
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">🌱</div>
+
+                    <h3>Césped sintético</h3>
+
+                    <p>
+                        Superficie ideal para disfrutar cada partido.
+                    </p>
+
+                </article>
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">💡</div>
+
+                    <h3>Iluminación</h3>
+
+                    <p>
+                        Disfruta tus partidos también en la noche.
+                    </p>
+
+                </article>
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">🕒</div>
+
+                    <h3>Horarios flexibles</h3>
+
+                    <p>
+                        Escoge el horario que mejor te convenga.
+                    </p>
+
+                </article>
+
+            </div>
+
+            <div class="price-card">
+
+                <div>
+
+                    <span class="tag">
+                        NUESTRO PRECIO
+                    </span>
+
+                    <h3>Reserva por una hora</h3>
+
+                    <p>
+                        Disfruta de nuestra cancha con tus amigos.
+                    </p>
+
+                </div>
+
+                <div class="price">
+
+                    <strong>$60.000</strong>
+
+                    <span>COP / hora</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- GALERÍA ILUSTRATIVA DE LA CANCHA -->
+
+        <section class="galeria-cancha" id="galeria">
+
+            <div class="galeria-encabezado">
+
+                <span class="galeria-etiqueta">
+                    CONOCE NUESTRAS INSTALACIONES
+                </span>
+
+                <h2>
+                    Un espacio para vivir el fútbol
+                </h2>
+
+                <p>
+                    Imágenes ilustrativas mientras agregamos
+                    las fotografías reales de nuestra cancha.
+                </p>
+
+            </div>
+
+            <div class="galeria-grid">
+
+                <article class="galeria-item galeria-grande">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=85"
+                        alt="Cancha de fútbol con iluminación"
+                        loading="lazy"
+                    >
+
+                    <div class="galeria-texto">
+                        Vive la emoción del fútbol
+                    </div>
+
+                </article>
+
+                <article class="galeria-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=800&q=85"
+                        alt="Estadio y campo de fútbol"
+                        loading="lazy"
+                    >
+
+                    <div class="galeria-texto">
+                        Espacios deportivos
+                    </div>
+
+                </article>
+
+                <article class="galeria-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=85"
+                        alt="Partido de fútbol"
+                        loading="lazy"
+                    >
+
+                    <div class="galeria-texto">
+                        Comparte con tus amigos
+                    </div>
+
+                </article>
+
+                <article class="galeria-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=85"
+                        alt="Jugadores disfrutando del fútbol"
+                        loading="lazy"
+                    >
+
+                    <div class="galeria-texto">
+                        Pasión por el deporte
+                    </div>
+
+                </article>
+
+                <article class="galeria-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=85"
+                        alt="Balón en el campo de fútbol"
+                        loading="lazy"
+                    >
+
+                    <div class="galeria-texto">
+                        Tu próximo partido
+                    </div>
+
+                </article>
+
+            </div>
+
+            <p class="galeria-aviso">
+                * Fotografías ilustrativas de referencia.
+                Se reemplazarán por imágenes reales de nuestras
+                instalaciones cuando estén disponibles.
+            </p>
+
+        </section>
+
+        <!-- FORMULARIO DE RESERVAS -->
+
+        <section class="section reservation-section" id="reservar">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    RESERVA EN POCOS PASOS
+                </span>
+
+                <h2>
+                    AGENDA TU <span>PARTIDO.</span>
+                </h2>
+
+                <p>
+                    Completa los datos y separa tu horario.
+                </p>
+
+            </div>
+
+            <div class="booking-layout">
+
+                <div class="booking-image">
+
+                    <div class="booking-image-text">
+
+                        <span>CANCHAFÁCIL</span>
+
+                        <h3>
+                            EL PRÓXIMO<br>
+                            PARTIDO ES TUYO.
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <form id="reserva-form" class="booking-form">
+
+                    <h3>Datos de la reserva</h3>
+
+                    <label for="nombre">
+                        Nombre completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Escribe tu nombre"
+                        required
+                        maxlength="60"
+                    >
+
+                    <label for="telefono">
+                        Número de teléfono
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        placeholder="Ej: 3001234567"
+                        required
+                        maxlength="15"
+                    >
+
+                    <label for="fecha">
+                        Fecha del partido
+                    </label>
+
+                    <input
+                        type="date"
+                        id="fecha"
+                        required
+                    >
+
+                    <label for="hora">
+                        Horario disponible
+                    </label>
+
+                    <select id="hora" required>
+
+                        <option value="">
+                            Primero selecciona una fecha
+                        </option>
+
+                    </select>
+
+                    <div
+                        class="availability"
+                        id="disponibilidad"
+                    >
+                        Selecciona una fecha para consultar los horarios.
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="primary-button full-button"
+                    >
+                        CONFIRMAR RESERVA →
+                    </button>
+
+                    <p class="form-note">
+                        El horario se reservará cuando confirmes tus datos.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+<!-- ==========================================
+     ORGANIZADOR DE PARTIDOS
+========================================== -->
+
+<section class="section partidos-section" id="organizar-partido">
+
+    <div class="section-heading">
+        <span class="tag">MÁS QUE RESERVAR UNA CANCHA</span>
+        <h2>ORGANIZA TU <span>PARTIDO.</span></h2>
+        <p>Registra jugadores, arma los equipos y lleva el marcador de cada encuentro.</p>
+    </div>
+
+    <div class="partidos-panel">
+
+        <div class="partidos-bloque">
+            <h3>1. Lista de jugadores</h3>
+            <p class="partidos-ayuda">Agrega los jugadores y asigna cada uno a un equipo.</p>
+
+            <div class="jugador-agregar">
+                <input
+                    type="text"
+                    id="jugador-nombre"
+                    maxlength="40"
+                    placeholder="Nombre del jugador"
+                    aria-label="Nombre del jugador"
+                >
+
+                <button type="button" class="partidos-boton" id="agregar-jugador">
+                    Agregar
+                </button>
+            </div>
+
+            <div id="lista-jugadores" class="lista-jugadores">
+                <p class="partidos-vacio">Todavía no has agregado jugadores.</p>
+            </div>
+        </div>
+
+        <div class="partidos-equipos">
+
+            <div class="partidos-bloque">
+                <h3>2. Configura el equipo 1</h3>
+
+                <label for="nombre-equipo-a">Nombre del equipo</label>
+                <input id="nombre-equipo-a" type="text" maxlength="30" value="Equipo A">
+
+                <label for="formacion-a">Formación</label>
+                <select id="formacion-a">
+                    <option value="1-4-3-3">1-4-3-3</option>
+                    <option value="1-3-5-2">1-3-5-2</option>
+                    <option value="1-4-2-3-1">1-4-2-3-1</option>
+                    <option value="1-5-3-2">4-2-3-1</option>
+                    <option value="1-3-4-3">1-3-4-3</option>
+                </select>
+            </div>
+
+            <div class="partidos-bloque">
+                <h3>3. Configura el equipo 2</h3>
+
+                <label for="nombre-equipo-b">Nombre del equipo</label>
+                <input id="nombre-equipo-b" type="text" maxlength="30" value="Equipo B">
+
+                <label for="formacion-b">Formación</label>
+                <select id="formacion-b">
+                    <option value="1-4-3-3">1-4-3-3</option>
+                    <option value="1-3-5-2">1-3-5-2</option>
+                    <option value="1-4-2-3-1">1-4-2-3-1</option>
+                    <option value="1-5-3-2">1-5-3-2</option>
+                    <option value="1-3-4-3">1-3-4-3</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="partidos-acciones">
+            <button type="button" class="partidos-boton" id="iniciar-partido">
+                Iniciar partido
+            </button>
+
+            <button type="button" class="partidos-boton partidos-boton-secundario" id="reiniciar-partido">
+                Reiniciar marcador
+            </button>
+
+            <span id="estado-partido" class="partidos-estado">
+                Partido sin iniciar
+            </span>
+        </div>
+
+    </div>
+
+    <!-- MARCADOR -->
+
+    <div class="marcador-card">
+
+        <div class="marcador-equipo">
+            <span id="marcador-nombre-a">Equipo A</span>
+            <strong id="marcador-a">0</strong>
+            <small id="marcador-formacion-a">Formación 1-2-1</small>
+
+            <button type="button" class="partidos-boton" id="gol-a" disabled>
+                + Gol
+            </button>
+        </div>
+
+        <div class="marcador-centro">
+            <span class="marcador-en-vivo">MARCADOR</span>
+            <strong id="reloj-partido">00:00</strong>
+            <span>VS</span>
+        </div>
+
+        <div class="marcador-equipo">
+            <span id="marcador-nombre-b">Equipo B</span>
+            <strong id="marcador-b">0</strong>
+            <small id="marcador-formacion-b">Formación 1-2-1</small>
+
+            <button type="button" class="partidos-boton" id="gol-b" disabled>
+                + Gol
+            </button>
+        </div>
+
+        <div class="marcador-finalizar">
+            <label for="autor-gol">Jugador que anotó (opcional)</label>
+            <select id="autor-gol">
+                <option value="">Sin especificar</option>
+            </select>
+
+            <button type="button" class="partidos-boton partidos-finalizar" id="finalizar-partido" disabled>
+                Finalizar y guardar resultado
+            </button>
+        </div>
+
+    </div>
+
+    <!-- ESTADÍSTICAS -->
+
+    <div class="estadisticas-partidos">
+
+        <div class="section-heading">
+            <span class="tag">RESUMEN DE ENCUENTROS</span>
+            <h2>ESTADÍSTICAS <span>GENERALES.</span></h2>
+        </div>
+
+        <div class="estadisticas-grid">
+
+            <article class="estadistica-item">
+                <span>Partidos jugados</span>
+                <strong id="estadistica-partidos">0</strong>
+            </article>
+
+            <article class="estadistica-item">
+                <span>Goles anotados</span>
+                <strong id="estadistica-goles">0</strong>
+            </article>
+
+            <article class="estadistica-item">
+                <span>Partidos con ganador</span>
+                <strong id="estadistica-victorias">0</strong>
+            </article>
+
+            <article class="estadistica-item">
+                <span>Empates</span>
+                <strong id="estadistica-empates">0</strong>
+            </article>
+
+        </div>
+
+        <h3 class="historial-titulo">Últimos resultados</h3>
+
+        <div id="historial-partidos" class="historial-partidos">
+            <p class="partidos-vacio">
+                Cuando finalices un partido, su resultado aparecerá aquí.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- MIS RESERVAS -->
+
+        <section class="section reservations-section" id="mis-reservas">
+
+            <div class="section-heading">
+
+                <span class="tag">
+                    ORGANIZA TUS PARTIDOS
+                </span>
+
+                <h2>
+                    MIS <span>RESERVAS.</span>
+                </h2>
+
+                <p>
+                    Consulta las reservas registradas en este navegador.
+                </p>
+
+            </div>
+
+            <div class="reservations-summary">
+
+                <div class="summary-card">
+
+                    <span>Reservas registradas</span>
+
+                    <strong id="total-reservas">0</strong>
+
+                </div>
+
+                <div class="summary-card">
+
+                    <span>Horarios ocupados</span>
+
+                    <strong id="horarios-ocupados">0</strong>
+
+                </div>
+
+            </div>
+
+            <div
+                id="lista-reservas"
+                class="reservations-list"
+            >
+
+                <div class="empty-state">
+
+                    <span>📅</span>
+
+                    <h3>Aún no hay reservas</h3>
+
+                    <p>
+                        Cuando registres una reserva aparecerá aquí.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer class="footer">
+
+        <a href="#inicio" class="logo">
+            ⚽ CANCHA<span>FÁCIL</span>
+        </a>
+
+        <p>
+            Tu próximo partido comienza aqui
+        </p>
+
+        <small>
+            © 2026 CanchaFácil. Proyecto universitario.
+        </small>
+
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+
+    <a
+        href="https://wa.me/573245266726?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20reserva%20de%20la%20cancha."
+        class="whatsapp-flotante"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp"
+        title="Escríbenos por WhatsApp"
+    >
+        ☎
+    </a>
+
+    <!-- MENSAJES DEL SISTEMA -->
+
+    <div
+        id="mensaje"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+

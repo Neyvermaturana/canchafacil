@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración | CanchaFácil</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            font-family: Arial, sans-serif;
+            background: #101410;
+            color: white;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        .login, .panel {
+            background: #191f19;
+            border: 1px solid #303930;
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .login {
+            max-width: 400px;
+            margin: 90px auto;
+            text-align: center;
+        }
+
+        h1, h2 { color: #a3ff12; }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #465046;
+            background: #101410;
+            color: white;
+        }
+
+        button {
+            padding: 11px 16px;
+            border: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 4px;
+        }
+
+        .principal {
+            background: #a3ff12;
+            color: #101410;
+        }
+
+        .secundario {
+            background: #303930;
+            color: white;
+        }
+
+        .cancelar {
+            background: #9f3030;
+            color: white;
+        }
+
+        .estadisticas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .estadistica {
+            background: #242d24;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .estadistica strong {
+            display: block;
+            font-size: 25px;
+            color: #a3ff12;
+            margin-top: 10px;
+        }
+
+        .reserva {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 18px 0;
+            border-bottom: 1px solid #303930;
+        }
+
+        .datos p {
+            margin: 7px 0;
+            color: #c5cfc5;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .oculto { display: none; }
+
+        .error {
+            color: #ff7777;
+            min-height: 20px;
+        }
+
+        @media (max-width: 650px) {
+            body { padding: 12px; }
+            .estadisticas { grid-template-columns: 1fr; }
+            .reserva { align-items: flex-start; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <!-- ACCESO -->
+        <div class="login" id="login">
+
+            <h1>⚽ CANCHAFÁCIL</h1>
+            <p>Administración privada</p>
+
+            <form id="form-login">
+                <input
+                    type="password"
+                    id="clave"
+                    placeholder="Contraseña de administrador"
+                    required
+                >
+
+                <button class="principal" type="submit">
+                    INGRESAR
+                </button>
+            </form>
+
+            <p class="error" id="error-login"></p>
+
+            <a href="index.html" style="color:#a3ff12">
+                Volver a la página principal
+            </a>
+
+        </div>
+
+        <!-- PANEL -->
+        <div class="panel oculto" id="panel">
+
+            <h1>Panel de administración</h1>
+            <p>Gestiona las reservas de CanchaFácil.</p>
+
+            <button class="secundario" id="actualizar">
+                Actualizar
+            </button>
+
+            <button class="secundario" id="salir">
+                Cerrar sesión
+            </button>
+
+            <div class="estadisticas">
+
+                <div class="estadistica">
+                    Total de reservas
+                    <strong id="total">0</strong>
+                </div>
+
+                <div class="estadistica">
+                    Reservas de hoy
+                    <strong id="hoy">0</strong>
+                </div>
+
+                <div class="estadistica">
+                    Valor de reservas
+                    <strong id="valor">$0</strong>
+                </div>
+
+            </div>
+
+            <h2>Reservas registradas</h2>
+
+            <input
+                type="search"
+                id="busqueda"
+                placeholder="Buscar por nombre o teléfono..."
+            >
+
+            <div id="lista"></div>
+
+        </div>
+
+    </div>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
